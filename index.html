@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ryan ❤️ Alana</title>
+
+<style>
+
+body{
+background:#fff5f7;
+font-family:Arial;
+text-align:center;
+margin:0;
+color:#444;
+overflow-x:hidden;
+}
+
+header{
+background:#ffb7c5;
+padding:60px;
+color:white;
+}
+
+h1{
+margin:0;
+font-size:3em;
+}
+
+.coracao{
+color:#ff4d6d;
+animation:pulsar 1.2s infinite;
+}
+
+@keyframes pulsar{
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.3)}
+}
+
+.container{
+max-width:700px;
+margin:auto;
+background:white;
+padding:40px;
+border-radius:25px;
+margin-top:-50px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.foto-casal{
+width:200px;
+height:200px;
+border-radius:50%;
+object-fit:cover;
+border:6px solid white;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+margin-bottom:20px;
+}
+
+#contador{
+background:#fff0f3;
+padding:20px;
+border-radius:15px;
+border:1px dashed #ff4d6d;
+display:flex;
+justify-content:center;
+}
+
+.tempo{
+margin:10px;
+font-weight:bold;
+color:#ff4d6d;
+}
+
+.tempo span{
+font-size:1.5em;
+display:block;
+}
+
+button{
+background:#ff4d6d;
+color:white;
+border:none;
+padding:15px 30px;
+border-radius:30px;
+font-size:1.2em;
+cursor:pointer;
+margin-top:20px;
+}
+
+button:hover{
+background:#ff1a43;
+}
+
+.carta{
+display:none;
+background:#fff0f3;
+padding:20px;
+border-radius:15px;
+margin-top:20px;
+}
+
+.coracao-caindo{
+position:fixed;
+top:-10%;
+font-size:24px;
+animation:cair linear forwards;
+}
+
+@keyframes cair{
+to{transform:translateY(110vh)}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MUSICA -->
+<audio id="musica" loop controls>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<header>
+<h1>Ryan <span class="coracao">❤️</span> Alana</h1>
+<p>A melhor história que Deus poderia escrever</p>
+</header>
+
+<div class="container">
+
+<img src="foto.jpeg" class="foto-casal">
+
+<h2>Juntos há:</h2>
+
+<div id="contador">
+<div class="tempo"><span id="dias">0</span>Dias</div>
+<div class="tempo"><span id="horas">0</span>Horas</div>
+<div class="tempo"><span id="minutos">0</span>Min</div>
+<div class="tempo"><span id="segundos">0</span>Seg</div>
+</div>
+
+<p>
+Tudo começou em <b>25/09/2025</b>.
+Desde esse dia nossa história começou.
+</p>
+
+<button onclick="abrirCarta()">Abrir Carta 💌</button>
+
+<div class="carta" id="carta">
+<p>
+Meu amor, hoje é um dia muito especial nas nossas vidas,
+A sua festa de aniversario de dezesseis anos e os meus dias que passo ao seu lado
+Obrigado por todos os momentos, pelas risadas
+por fazer parte da minha vida, e de me mostrar o lado bom da vida.
+
+Feliz aniversário ❤️
+</p>
+</div>
+
+<button onclick="mostrarSurpresa()">Surpresa ✨</button>
+
+<div id="mensagem-surpresa" style="display:none; background:#fff0f3; padding:20px; border-radius:15px; margin-top:20px;">
+
+<h2>carta aberta ao meu amor❤️</h2>
+
+<p>
+Você é uma pessoa incrível e merece todas as coisas boas desse mundo.
+Obrigado por estar comigo e por fazer minha vida melhor.
+Eu te amo muito meu amor, obrigado por tudo que vc esteve presente na minha vida
+eu estou terminando esse codigo na escola, acresentei a msc em casa demorei mto pra fazer tudo funcionar kkkkkkkkkkkkkk, mas valeu a pena, cada momento, cada segundo, cada estresse kkk, mas quando é pra quem amamos tudo vale a pena, mais uma vez eu te amo obrigado por tudo.
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+const inicio = new Date(2025,8,25)
+
+function atualizar(){
+
+const agora = new Date()
+const dif = agora - inicio
+
+const d = Math.floor(dif/(1000*60*60*24))
+const h = Math.floor((dif%(1000*60*60*24))/(1000*60*60))
+const m = Math.floor((dif%(1000*60*60))/(1000*60))
+const s = Math.floor((dif%(1000*60))/1000)
+
+document.getElementById("dias").innerText=d
+document.getElementById("horas").innerText=h
+document.getElementById("minutos").innerText=m
+document.getElementById("segundos").innerText=s
+
+}
+
+setInterval(atualizar,1000)
+
+function abrirCarta(){
+
+document.getElementById("carta").style.display="block"
+
+const musica = document.getElementById("musica")
+musica.play()
+
+}
+
+function mostrarSurpresa(){
+
+document.getElementById("mensagem-surpresa").style.display="block"
+
+for(let i=0;i<60;i++){
+
+setTimeout(()=>{
+
+const coracao=document.createElement("div")
+
+coracao.innerHTML="❤️"
+
+coracao.className="coracao-caindo"
+
+coracao.style.left=Math.random()*100+"vw"
+
+coracao.style.animationDuration=(Math.random()*3+2)+"s"
+
+document.body.appendChild(coracao)
+
+setTimeout(()=>{coracao.remove()},5000)
+
+},i*100)
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
